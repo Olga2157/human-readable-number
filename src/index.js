@@ -34,18 +34,18 @@ module.exports = function toReadable(number) {
         return numbersMap[number];
     }
     let numString = number.toString();
-    let numArr = numString.split('');
+
     if (numString.length === 2) {
-        return numbersMap[numArr[0] * 10] + ' ' + numbersMap[numArr[1]];
+        return numbersMap[numString[0] * 10] + ' ' + numbersMap[numString[1]];
     }
     if (numString.length === 3) {
         let lastTwoDigits = number % 100;
-        if (numArr[1] === '0' && numArr[2] === '0') {
-            return numbersMap[numArr[0]] + ' hundred';
+        if (numString[1] === '0' && numString[2] === '0') {
+            return numbersMap[numString[0]] + ' hundred';
         } else if (numbersMap[lastTwoDigits]) {
-            return numbersMap[numArr[0]] + ' hundred ' + numbersMap[lastTwoDigits];
+            return numbersMap[numString[0]] + ' hundred ' + numbersMap[lastTwoDigits];
         } else {
-            return numbersMap[numArr[0]] + ' hundred ' + numbersMap[numArr[1] * 10] + ' ' + numbersMap[numArr[2]];
+            return numbersMap[numString[0]] + ' hundred ' + numbersMap[numString[1] * 10] + ' ' + numbersMap[numString[2]];
         }
     }
 }
